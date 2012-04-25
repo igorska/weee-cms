@@ -26,5 +26,8 @@ class User extends ActiveRecord
         return md5(md5($password));
     }
 
+    public function getUsername() {
+        return "#user_{$this->id}";
+    }
 
 }

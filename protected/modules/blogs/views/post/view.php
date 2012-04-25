@@ -21,3 +21,6 @@
         &nbsp; <a href="<?php echo $this->createUrl("/blogs/post/update", array("id" => $model->id)); ?>">редактировать</a>
     <?php endif; ?>
 </div>
+
+<?php $this->widget('application.modules.comments.widgets.CommentsList', array('model' => $model)); ?>
+<?php $this->widget('application.modules.comments.widgets.NewComment', array('model' => $model)); ?>

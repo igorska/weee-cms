@@ -45,5 +45,5 @@ return array(
             'allowAutoLogin' => true,
         ),
     ),
-    'modules' => array('pages', 'users', 'blogs',)
+    'modules' => array('pages', 'users', 'blogs', 'comments',)
 );

@@ -9,6 +9,7 @@
         <link href="/css/app.css" rel="stylesheet">
         <script src="/js/jquery.js"></script>
         <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/app.js"></script>
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
