@@ -1,7 +1,7 @@
 <h5>Комментарии (<?php echo count($comments); ?>):</h5>
 <div id="comments_list_<?php echo $model_name; ?>_<?php echo $model_id; ?>">
     <?php if ($comments == null): ?>
-        <div class="alert alert-info">
+        <div class="alert alert-info nocomments">
             Комментариев нет
         </div>
     <?php else: ?>
