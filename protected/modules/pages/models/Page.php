@@ -15,4 +15,10 @@ class Page extends ActiveRecord
     }
 
 
+    public function getAdminName()
+    {
+        return 'Страницы';
+    }
+
+
 }

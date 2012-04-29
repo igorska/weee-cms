@@ -3,15 +3,17 @@
 class Blogs extends ActiveRecord
 {
 
-    public static function model($className=__CLASS__)
+    public static function model($className = __CLASS__)
     {
         return parent::model($className);
     }
+
 
     public function tableName()
     {
         return '{{blogs}}';
     }
+
 
     public function rules()
     {
@@ -20,13 +22,29 @@ class Blogs extends ActiveRecord
         );
     }
 
+
     public function attributeLabels()
     {
         return array(
             'title' => 'Название',
-            'url' => 'Адрес',
+            'url' => 'Url',
+            'author' => 'Автор',
+            'posts_count' => 'Колличество постов',
+            'is_open' => 'Открытый?',
         );
     }
+
+
+    public function adminGridSettings()
+    {
+        return array(
+            'columns' => array(
+                'title',
+                'url',
+            )
+        );
+    }
+
 
     public function beforeSave()
     {
@@ -38,6 +56,7 @@ class Blogs extends ActiveRecord
         return true;
     }
 
+
     public function search()
     {
         $criteria = new CDbCriteria;
@@ -47,13 +66,21 @@ class Blogs extends ActiveRecord
                     'criteria' => $criteria
                 ));
     }
-    
-    public function getHref() {
+
+
+    public function getHref()
+    {
         return Yii::app()->controller->createUrl("/blogs/blog/view", array("url" => $this->url));
     }
-    
-    public static function getAllowedBlogs($user_id) {
+
+
+    public static function getAllowedBlogs($user_id)
+    {
         return self::model()->findAllBySql("SELECT * FROM {{blogs}} WHERE is_open = 1 OR id IN(SELECT blog_id FROM {{blogs_can_write}} WHERE user_id = {$user_id})");
+    }
+
+    public function getAdminName() {
+        return 'Блоги';
     }
 
 }
