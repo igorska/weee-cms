@@ -130,10 +130,12 @@ class AdminModule extends WebModule
     }
 
 
-    public function getModelName($model) {
+    public function getModelName($model)
+    {
         if (method_exists($model, 'getAdminName'))
             return $model->getAdminName();
-        
+
         return get_class($model);
     }
+
 }
