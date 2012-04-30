@@ -6,9 +6,9 @@
         'htmlOptions' => array('class' => 'well')
             ));
 ?>
-    <?php foreach ($attributes as $name => $type): ?>
+    <?php foreach ($attributes as $name => $data): ?>
         <?php echo $form->labelEx($model, $name); ?>
-        <?php echo $this->module->createWidget($form, $model, $name, $type); ?>
+        <?php echo $this->module->createWidget($form, $model, $name, $data); ?>
         <?php echo $form->error($model, $name); ?>
     <?php endforeach; ?>
 

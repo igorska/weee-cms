@@ -102,27 +102,34 @@ class AdminModule extends WebModule
                 continue;
 
             if ($model->tableSchema->columns[$k]->dbType == 'text')
-                $attributes[$k] = 'textArea';
+                $attributes[$k] = array('type' => 'textArea');
             else
-                $attributes[$k] = 'textField';
+                $attributes[$k] = array('type' => 'textField');
         }
 
         return $attributes;
     }
 
 
-    public function createWidget($form, $model, $attribute, $type)
+    public function createWidget($form, $model, $attribute, $data)
     {
+        $type = isset($data['type']) ? $data['type'] : 'textField';
+        $html_options = isset($data['htmlOptions']) ? $data['htmlOptions'] : array();
+        
         switch ($type)
         {
             case 'textArea';
-                return $form->textArea($model, $attribute);
+                return $form->textArea($model, $attribute, $html_options);
                 break;
 
             case 'textField';
-                return $form->textField($model, $attribute);
+                return $form->textField($model, $attribute, $html_options);
                 break;
 
+            case 'editor';
+                Yii::app()->controller->widget('application.modules.admin.extensions.ckeditor.CKEditor', array('model' => $model, 'attribute' => $attribute));
+                break;
+            
             default;
                 return $form->textField($model, $attribute);
                 break;
@@ -137,5 +144,6 @@ class AdminModule extends WebModule
 
         return get_class($model);
     }
+
 
 }

@@ -27,6 +27,11 @@ class MainController extends AdminController
         if (method_exists($model, 'adminGridSettings'))
             $settings = CMap::mergeArray($settings, $model->adminGridSettings());
 
+        if (count($settings['columns']) == 0)
+            foreach ($model->attributeNames() as $attribute)
+                $settings['columns'][] = $attribute;
+
+
         $settings['columns'][] = array(
             'class' => 'CButtonColumn',
             'updateButtonUrl' => 'Yii::app()->createUrl("/admin/main/modelupdate" ,array("module_name"=>"' . $module_name . '", "model_name" => "' . $model_name . '", "pk" => $data->primaryKey))',
