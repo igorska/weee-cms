@@ -110,20 +110,30 @@ class AdminModule extends WebModule
         return $attributes;
     }
 
-
+    /**
+     * Создает виджет редактирования для поля
+     * @param object $form
+     * @param object $model
+     * @param string $attribute
+     * @param array $data
+     */
     public function createWidget($form, $model, $attribute, $data)
     {
         $type = isset($data['type']) ? $data['type'] : 'textField';
         $html_options = isset($data['htmlOptions']) ? $data['htmlOptions'] : array();
         
-        switch ($type)
+        switch (mb_strtolower($type))
         {
-            case 'textArea';
+            case 'textarea';
                 return $form->textArea($model, $attribute, $html_options);
                 break;
 
-            case 'textField';
+            case 'textfield';
                 return $form->textField($model, $attribute, $html_options);
+                break;
+            
+            case 'dropdown';
+                return $form->dropDownList($model, $attribute, $data['items'], $html_options);
                 break;
 
             case 'editor';
@@ -131,12 +141,16 @@ class AdminModule extends WebModule
                 break;
             
             default;
-                return $form->textField($model, $attribute);
+                return $form->textField($model, $attribute, $html_options);
                 break;
         }
     }
 
-
+    /**
+     * Полочение названия модели
+     * @param object $model
+     * @return string name of model 
+     */
     public function getModelName($model)
     {
         if (method_exists($model, 'getAdminName'))

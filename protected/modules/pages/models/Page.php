@@ -14,7 +14,9 @@ class Page extends ActiveRecord
         return '{{pages}}';
     }
 
-
+    /**
+     * Название модели в админ панеле
+     */
     public function getAdminName()
     {
         return 'Страницы';
@@ -41,6 +43,9 @@ class Page extends ActiveRecord
     }
 
 
+    /**
+     * Настройки для списка страниц в админ-панеле
+     */
     public function adminGridSettings()
     {
         return array(
@@ -52,6 +57,9 @@ class Page extends ActiveRecord
     }
 
 
+    /**
+     * Настройки просмотра конкретной страницы в админ-панеле
+     */
     public function adminViewSettings()
     {
         return array(
@@ -63,7 +71,9 @@ class Page extends ActiveRecord
         );
     }
 
-
+    /**
+     * Настройки полей при редактировании в адми-панеле
+     */
     public function adminFormAttributes()
     {
         return array(

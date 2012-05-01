@@ -28,7 +28,38 @@ class BlogsPosts extends ActiveRecord
     {
         return array(
             'text' => 'Текст',
-            'title' => 'Название'
+            'title' => 'Название',
+            'date' => 'Дата',
+            'author' => 'Автор',
+            'blog' => 'Блог',
+        );
+    }
+
+
+    public function adminViewSettings()
+    {
+        return array(
+            'attributes' => array(
+                'title',
+                'text_html:html',
+                'text_short:html',
+                'date',
+                'author',
+                'blog'
+            )
+        );
+    }
+
+
+    public function adminFormAttributes()
+    {
+        Yii::import('blogs.models.Blogs');
+        return array(
+            'title' => array('type' => 'textfield', 'htmlOptions' => array('style' => 'width: 500px;')),
+            'text' => array('type' => 'editor'),
+            'blog' => array('type' => 'dropdown', 'items' => array(0 => 'Личный') + CHtml::listData(Blogs::model()->findAll(), 'id', 'title')),
+            'date' => array('type' => 'textfield', 'htmlOptions' => array('style' => 'width: 200px;')),
+            'author' => array('type' => 'textfield', 'htmlOptions' => array('style' => 'width: 200px;')),
         );
     }
 
@@ -42,9 +73,29 @@ class BlogsPosts extends ActiveRecord
     }
 
 
+    public function adminGridSettings()
+    {
+        return array(
+            'columns' => array(
+                'id',
+                'title',
+                'date',
+                'author',
+                'blog',
+            )
+        );
+    }
+
+
     public function getHref()
     {
         return Yii::app()->controller->createUrl("/blogs/post/view", array("id" => $this->id));
+    }
+
+
+    public function getAdminName()
+    {
+        return 'Посты';
     }
 
 
@@ -66,6 +117,7 @@ class BlogsPosts extends ActiveRecord
             $this->text_short = $this->text;
         }
 
+        Yii::import('blogs.components.*');
         $text = TextHelper::purify($this->text);
 
         if (preg_match("#<cut/>#i", $text))
@@ -81,5 +133,17 @@ class BlogsPosts extends ActiveRecord
 
         return true;
     }
+
+
+    public function search()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('id', $this->id, true);
+
+        return new CActiveDataProvider(get_class($this), array(
+                    'criteria' => $criteria
+                ));
+    }
+
 
 }

@@ -17,11 +17,7 @@ class BlogsModule extends WebModule
 
     public function init()
     {
-        $this->setImport(array(
-            'blogs.models.*',
-            'blogs.components.*',
-            'users.models.*'
-        ));
+
     }
 
 
