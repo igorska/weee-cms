@@ -1,4 +1,5 @@
 <?php
+// Mac OS X git test
 error_reporting(E_ALL ^ E_NOTICE);
 header("Content-type: text/html; charset=UTF-8");
 
