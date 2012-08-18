@@ -12,8 +12,13 @@ $this->crumbs=array(
     'data' => $model,
     'attributes' => array(
     'id',
-    'url',
     'title',
-    'text',
+    'text:html',
+    'cdate',
+    'author.name',
+    'url',
+    'seo_title',
+    'seo_description',
+    'seo_keywords',
 	),
 )); ?>

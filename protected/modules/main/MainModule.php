@@ -1,15 +1,17 @@
 <?php
-
 /**
- * @author Troy <troytft@gmail.com> 
+ * @author Troy <troytft@gmail.com>
  */
-class MainModule extends CWebModule
+
+namespace weee\modules\main;
+
+class MainModule extends \WebModule
 {
 
     public function init()
     {
         parent::init();
-        Yii::import('m.main.models.*');
+        \Yii::import('m.main.models.*');
     }
 
 

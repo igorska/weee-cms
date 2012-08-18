@@ -1,6 +1,6 @@
 <?php
 
-class PageAdminController extends BaseAdminController
+class NewsCategoryAdminController extends BaseAdminController
 {
 
     public function actionView($id)
@@ -12,12 +12,12 @@ class PageAdminController extends BaseAdminController
 
     public function actionCreate()
     {
-        Yii::import('m.pages.models.Page');
-        $model = new Page;
+        Yii::import('application.modules.main.models.NewsCategory');
+        $model = new NewsCategory;
 
-        if (isset($_POST['Page']))
+        if (isset($_POST['NewsCategory']))
         {
-            $model->attributes = $_POST['Page'];
+            $model->attributes = $_POST['NewsCategory'];
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
         }
@@ -31,9 +31,9 @@ class PageAdminController extends BaseAdminController
     {
         $model = $this->loadModel($id);
 
-        if (isset($_POST['Page']))
+        if (isset($_POST['NewsCategory']))
         {
-            $model->attributes = $_POST['Page'];
+            $model->attributes = $_POST['NewsCategory'];
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
         }
@@ -58,11 +58,11 @@ class PageAdminController extends BaseAdminController
 
     public function actionIndex()
     {
-        Yii::import('m.pages.models.Page');
-        $model = new Page('search');
+        Yii::import('application.modules.main.models.NewsCategory');
+        $model = new NewsCategory('search');
         $model->unsetAttributes();
-        if (isset($_GET['Page']))
-            $model->attributes = $_GET['Page'];
+        if (isset($_GET['NewsCategory']))
+            $model->attributes = $_GET['NewsCategory'];
 
         $this->render('admin', array(
             'model' => $model,
@@ -71,8 +71,8 @@ class PageAdminController extends BaseAdminController
 
     public function loadModel($id)
     {
-        Yii::import('m.pages.models.Page');
-        $model = Page::model()->findByPk($id);
+        Yii::import('application.modules.main.models.NewsCategory');
+        $model = NewsCategory::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'Запись не найдена');
 

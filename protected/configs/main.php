@@ -10,7 +10,7 @@ return array(
     'aliases' => array(
         'weee' => 'application',
     ),
-    'defaultController' => 'pages/main/index',
+    'defaultController' => 'main/main/index',
     'components' => array(
         'urlManager' => array(
             'urlFormat' => 'path',
@@ -51,7 +51,10 @@ return array(
             'errorAction' => '/main/main/error',
         ),
     ),
-    'modules' => array('pages', 'blogs', 'comments', 'admin', 'main',
+    'modules' => array('blogs', 'comments', 'admin',
+        'main' => array(
+            'class' => 'weee\modules\main\MainModule',
+        ),
         'users' => array(
             'class' => 'weee\modules\users\UsersModule',
         ),
