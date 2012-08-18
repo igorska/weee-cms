@@ -8,6 +8,8 @@ class Breadcrumbs extends CBreadcrumbs
 
     public $tagName = 'ul';
     public $htmlOptions = array('class' => 'breadcrumb');
+    public $homeLink = '/';
+    public $homeLabel = 'Главная';
 
     public function run()
     {
@@ -15,7 +17,7 @@ class Breadcrumbs extends CBreadcrumbs
             return;
 
         echo CHtml::openTag($this->tagName, $this->htmlOptions) . "\n";
-        $links = '<li>' . CHtml::link('Главная', '/') . '<span class="divider">/</span></li>';
+        $links = '<li>' . CHtml::link($this->homeLabel, $this->homeLink) . '<span class="divider">/</span></li>';
 
         $count = count($this->links);
         $i = 1;

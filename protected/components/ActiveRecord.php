@@ -1,4 +1,7 @@
 <?php
-class ActiveRecord extends CActiveRecord {
-    
+
+abstract class ActiveRecord extends CActiveRecord
+{
+
+    abstract function name();
 }

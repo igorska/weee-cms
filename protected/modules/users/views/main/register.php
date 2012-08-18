@@ -1,38 +1,16 @@
-<?php
-$this->pageTitle = 'Регистрация';
-$this->crumbs = array('Регистрация');
-?>
+<div style="width: 300px; margin: auto;">
+    <?php echo CHtml::errorSummary($model); ?>
+    <form method="post">
+        <label>Логин</label>
+        <input type="text" class="input-block-level" value="<?php echo $model->login; ?>" name="User[login]"/>
 
-<h2>Регистрация</h2>
-    <?php
-    $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'register-form-register-form',
-        'enableAjaxValidation' => false,
-        'htmlOptions' => array('class' => 'well')
-            ));
-    ?>
+        <label>Email</label>
+        <input type="email" class="input-block-level" value="<?php echo $model->email; ?>" name="User[email]"/>
 
-        <?php if ($model->hasErrors()): ?>
-                <div class="message error">
-                    <?php foreach ($model->errors as $error): ?>
-                        <p class="errornote"><?php echo $error[0]; ?></p>
-                <?php endforeach; ?>
-                </div>
-        <?php endif; ?>
+        <label>Пароль</label>
+        <input type="password" class="input-block-level" value="<?php echo $model->password; ?>" name="User[password]"/>
 
-
-        <label>E-mail:</label>
-        <input name="User[email]" value="<?php echo $model->email; ?>">
-
-
-        <label>Пароль:</label>
-        <input name="User[password]" type="password">
-
-        <label>Повтор пароля:</label>
-         <input name="User[password2]" type="password">
-
-        <br/><input type="submit" class="btn" value="Регистрация">
-
-
-<?php $this->endWidget(); ?>
-
+        <br/><br/>
+        <input type="submit" class="btn btn-primary" value="Регистрация"/>
+    </form>
+</div>

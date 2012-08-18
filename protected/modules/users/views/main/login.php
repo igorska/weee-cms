@@ -1,15 +1,13 @@
-<?php
-    $this->pageTitle = 'Авторизация';
-    $this->crumbs = array('Авторизация');
-?>
+<div style="width: 300px; margin: auto;">
+    <?php echo CHtml::errorSummary($model); ?>
+    <form method="post">
+        <label>Логин</label>
+        <input type="text" class="input-block-level" value="<?php echo $model->login; ?>" name="LoginForm[login]"/>
 
-<h2>Авторизация</h2>
-<form method="post" class="well">
-    <label>E-mail:</label>
-    <input name="LoginForm[username]">
+        <label>Пароль</label>
+        <input type="password" class="input-block-level" value="<?php echo $model->password; ?>" name="LoginForm[password]"/>
 
-    <label>Пароль:</label>
-    <input name="LoginForm[password]" type="password"> <br/>
-
-    <input type="submit" value="Войти" class="btn">
-</form>
+        <br/><br/>
+        <input type="submit" class="btn btn-primary" value="Войти"/>
+    </form>
+</div>

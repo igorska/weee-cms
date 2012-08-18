@@ -1,68 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="utf-8">
-        <title><?Php echo $this->pageTitle; ?></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><?php echo $this->pageTitle; ?></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <link href="/css/bootstrap.css" rel="stylesheet">
-        <link href="/css/app.css" rel="stylesheet">
-        <script src="/js/jquery.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/jqueryui.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/app.js"></script>
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
+        <script src="/js/app.js?<?php echo filemtime(Yii::getPathOfAlias('www') . '/js/app.js'); ?>"></script>
+        <link href="/css/jqueryui.css" rel="stylesheet">
+        <link href="/css/bootstrap.css" rel="stylesheet">
+        <link href="/css/app.css?<?php echo filemtime(Yii::getPathOfAlias('www') . '/css/app.css'); ?>" rel="stylesheet">
     </head>
-
     <body>
-        <div class="navbar navbar-fixed-top">
+        <div class="navbar">
             <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="/"><?php echo Yii::app()->name; ?></a>
-                    <div class="nav-collapse">
-                        <ul class="nav">
-                            <li><a href="/">Главная</a></li>
-                        </ul>
-                        
-                        <ul class="nav">
-                            <li class="dropdown">
-                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Блоги <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="<?php echo $this->createUrl('/blogs/post/create'); ?>">Добавить запись</a></li>
-                                    <li><a href="<?php echo $this->createUrl('/blogs/blog/create'); ?>">Добавить блог</a></li>
-                                    <li><a href="<?php echo $this->createUrl('/blogs/post/index'); ?>">Все записи</a></li>
-                                    <li><a href="<?php echo $this->createUrl('/blogs/blog/index'); ?>">Список блогов</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        
-                        <ul class="nav">
-                            <li><a href="<?php echo $this->createUrl('/pages/main/view', array('url' => 'about')); ?>">О нас</a></li>
-                        </ul>
-                        
-                        <?php $this->widget('users.widgets.UserMenu'); ?>
-                    </div>
+                <a class="brand" href="/"><span style="color: white;"><?php echo Yii::app()->name; ?></span> <sup>dev</sup></a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li><a href="/about">О сайте</a></li>
+                    </ul>
                 </div>
+
+                <?php $this->widget('application.modules.users.widgets.Menu'); ?>
             </div>
         </div>
 
-        <div class="container">
-            <?php $this->widget('Breadcrumbs', array(
-                'links' => $this->crumbs,
-            )); ?>
-            <?php echo $content; ?>
-            
-            <hr/>
-            <footer>
-                <p>© Weee CMS based on Yii Framework</p>
-            </footer>
-        </div> 
+        <div id="main_wrapper">
+            <?php if (Yii::app()->user->hasFlash('success')): ?>
+                <div class="alert alert-success"><?php echo Yii::app()->user->getFlash('success'); ?></div>
+            <?php endif; ?>
+
+            <?php if (Yii::app()->user->hasFlash('info')): ?>
+                <div class="alert alert-info"><?php echo Yii::app()->user->getFlash('info'); ?></div>
+            <?php endif; ?>
+
+            <?php if (Yii::app()->user->hasFlash('error')): ?>
+                <div class="alert alert-error"><?php echo Yii::app()->user->getFlash('error'); ?></div>
+            <?php endif; ?>
+
+            <div id="content"><?php echo $content; ?></div>
+            <div id="notify"></div>
+
+            <div>
+                <hr/>
+                &copy; <?php echo Yii::app()->name; ?> <?php echo date('Y'); ?>  <a href="/about" class="feed-link" style="float: right;">О сайте</a>
+            </div>
+        </div>
     </body>
 </html>

@@ -1,87 +1,89 @@
 <?php
 
+/**
+ * Модель для таблицы "{{pages}}".
+ *
+ * @property integer $id
+ * @property string $url
+ * @property string $title
+ * @property string $text
+ */
 class Page extends ActiveRecord
 {
-
-    public static function model($className = __CLASS__)
+    /**
+     * Возращает экземпляр модели
+     * @param string $className Название модели
+     * @return Page     
+     */
+    public static function model($className=__CLASS__)
     {
         return parent::model($className);
     }
 
-
+    /**
+     * @return string Название таблицы
+     */
     public function tableName()
     {
         return '{{pages}}';
     }
+    
+    /**
+     * @return string Название модели
+     */
+    public function name() 
+    {
+        return 'Pages';
+    }
 
     /**
-     * Название модели в админ панеле
+     * @return array Массив правил валидации для атрибутов модели
      */
-    public function getAdminName()
+    public function rules()
     {
-        return 'Страницы';
+        return array(
+            array('url, title, text', 'required'),
+            array('url, title', 'length', 'max' => 255),
+            array('id, url, title, text', 'safe', 'on' => 'search'),
+        );
     }
 
-
-    public function search()
+    /**
+     * @return array Связи
+     */
+    public function relations()
     {
-        $criteria = new CDbCriteria;
-        $criteria->compare('id', $this->id, true);
-
-        return new CActiveDataProvider(get_class($this), array(
-                    'criteria' => $criteria
-                ));
+        return array(
+        );
     }
 
-
+    /**
+     * @return array Лейблы
+     */
     public function attributeLabels()
     {
         return array(
+            'id' => 'ID',
+            'url' => 'Url',
             'title' => 'Заголовок',
             'text' => 'Текст',
         );
     }
 
-
     /**
-     * Настройки для списка страниц в админ-панеле
+     * @return CActiveDataProvider 
      */
-    public function adminGridSettings()
+    public function search()
     {
-        return array(
-            'columns' => array(
-                'title',
-                'url',
-            )
-        );
+        $criteria = new CDbCriteria;
+
+        $criteria->compare('id', $this->id);
+        $criteria->compare('url', $this->url, true);
+        $criteria->compare('title', $this->title, true);
+        $criteria->compare('text', $this->text, true);
+    
+        return new CActiveDataProvider($this, array(
+                'criteria' => $criteria,
+        ));
     }
-
-
-    /**
-     * Настройки просмотра конкретной страницы в админ-панеле
-     */
-    public function adminViewSettings()
-    {
-        return array(
-            'attributes' => array(
-                'title',
-                'url',
-                'text:html'
-            )
-        );
-    }
-
-    /**
-     * Настройки полей при редактировании в адми-панеле
-     */
-    public function adminFormAttributes()
-    {
-        return array(
-            'title' => array('type' => 'textField', 'htmlOptions' => array('style' => 'width: 500px;')),
-            'url' => array('type' => 'textField', 'htmlOptions' => array('style' => 'width: 500px;')),
-            'text' => array('type' => 'editor'),
-        );
-    }
-
-
 }

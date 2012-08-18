@@ -1,4 +1,5 @@
-<ul class="nav pull-right">
-    <li><a><?php echo $model->email; ?></a></li>
-    <li><a href="<?php echo Yii::app()->controller->createUrl('/users/main/logout'); ?>">Выход</a></li>
-</ul>
+<div class="nav-collapse pull-right">
+    <ul class="nav">
+        <li><a href="<?php echo Yii::app()->createUrl('/users/main/logout'); ?>">Выйти</a></li>
+    </ul>
+</div>

@@ -1,28 +1,21 @@
 <?php
+/**
+ * @author Troy <troytft@gmail.com>
+ */
+namespace weee\modules\users;
 
-class UsersModule extends WebModule
+class UsersModule extends \WebModule
 {
 
-    public static function name()
+    public function name()
     {
         return 'Пользователи';
     }
 
 
-    public static function description()
+    public function description()
     {
-        return 'Модуль пользователей';
-    }
-
-
-    public function init()
-    {
-        parent::init();
-
-        $this->setImport(array(
-            'users.models.*',
-            'users.components.*',
-        ));
+        return 'Управление пользователи';
     }
 
 

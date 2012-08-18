@@ -1,4 +1,4 @@
-<h2>Главная страница</h2>
+<h3>Главная страница</h3>
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis nisi nec diam pretium in blandit est condimentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus ac ligula nec leo vestibulum bibendum sed nec urna. Pellentesque vitae felis id tellus egestas lobortis id ut elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras purus erat, condimentum sit amet rhoncus eget, blandit quis velit. Suspendisse tempor ligula quis massa molestie vehicula. Maecenas semper velit scelerisque orci tincidunt sed aliquet quam molestie. Mauris lorem lacus, varius at dictum non, porttitor at massa. Nunc auctor, leo et placerat dignissim, mi nunc facilisis nulla, at dictum justo ipsum ut elit.
 </p>

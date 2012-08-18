@@ -9,7 +9,9 @@ class LinkPager extends CLinkPager
         if (empty($buttons))
             return;
 
+        echo CHtml::openTag('div', array('class' => 'pagination'));
         echo CHtml::tag('ul', $this->htmlOptions, implode("\n", $buttons));
+        echo CHtml::closeTag('div');
     }
 
 

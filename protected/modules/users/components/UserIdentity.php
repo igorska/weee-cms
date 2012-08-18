@@ -1,18 +1,31 @@
 <?php
 
-class UserIdentity extends CUserIdentity {
+class UserIdentity extends CUserIdentity
+{
 
     private $_id;
     private $_model;
+    public $login;
 
-    public function authenticate() {
-        $user = User::model()->find('LOWER(email)=?', array(strtolower($this->username)));
+    public function __construct($login, $password)
+    {
+        $this->login = $login;
+        $this->password = $password;
+    }
+
+
+    public function authenticate()
+    {
+        $user = User::model()->find('LOWER(login)=?', array(strtolower($this->login)));
         $this->_model = $user;
         if ($user === null)
+        {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        else if (!$user->validatePassword($this->password))
+        } else if (!$user->validatePassword($this->password))
+        {
             $this->errorCode = self::ERROR_PASSWORD_INVALID;
-        else {
+        } else
+        {
             $this->_id = $user->id;
             $this->username = $user->email;
             $this->errorCode = self::ERROR_NONE;
@@ -20,16 +33,23 @@ class UserIdentity extends CUserIdentity {
         return $this->errorCode == self::ERROR_NONE;
     }
 
-    public function getId() {
+
+    public function getId()
+    {
         return $this->_id;
     }
 
-    public function getModel() {
+
+    public function getModel()
+    {
         return $this->_model;
     }
 
-    public function getEmail() {
+
+    public function getEmail()
+    {
         return $this->_model->email;
     }
+
 
 }
