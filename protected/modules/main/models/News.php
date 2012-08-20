@@ -21,7 +21,7 @@ class News extends ActiveRecord
     /**
      * Возращает экземпляр модели
      * @param string $className Название модели
-     * @return News     
+     * @return News
      */
     public static function model($className = __CLASS__)
     {
@@ -35,6 +35,17 @@ class News extends ActiveRecord
     public function tableName()
     {
         return '{{news}}';
+    }
+
+
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), array(
+                    'sortable' => array(
+                        'class' => 'ext.sortable.SortableBehavior',
+                        'column' => 'sort',
+                    )
+                ));
     }
 
 
@@ -98,7 +109,7 @@ class News extends ActiveRecord
 
 
     /**
-     * @return CActiveDataProvider 
+     * @return CActiveDataProvider
      */
     public function search()
     {

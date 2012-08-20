@@ -1,13 +1,12 @@
 <?php
-Yii::import('zii.widgets.grid.CGridView');
+Yii::import('ext.sortable.*');
 
 /**
  * @author Troy <troytft@gmail.com>
  */
-class GridView extends CGridView
+class GridView extends SortableGridView
 {
 
     public $cssFile = '/css/gridview/styles.css';
-    public $template = "{items}\n{summary}\n{pager}";
 
 }

@@ -7,7 +7,7 @@
 #
 # Адрес: 127.0.0.1 (MySQL 5.1.63)
 # Схема: weee
-# Время создания: 2012-08-18 11:06:24 +0000
+# Время создания: 2012-08-20 12:37:07 +0000
 # ************************************************************
 
 
@@ -18,94 +18,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
-# Дамп таблицы weee_news
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `weee_news`;
-
-CREATE TABLE `weee_news` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `cdate` datetime DEFAULT NULL,
-  `author_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `short_text` text,
-  `text` text,
-  `seo_title` varchar(255) DEFAULT NULL,
-  `seo_description` varchar(255) DEFAULT NULL,
-  `seo_keywords` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `weee_news` WRITE;
-/*!40000 ALTER TABLE `weee_news` DISABLE KEYS */;
-
-INSERT INTO `weee_news` (`id`, `cdate`, `author_id`, `category_id`, `url`, `title`, `short_text`, `text`, `seo_title`, `seo_description`, `seo_keywords`)
-VALUES
-	(1,'2012-08-09 23:33:14',1,1,'testovaya_zapis','Тестовая запись','<p>\r\n	<strike>Lorem Ipsum</strike> - это текст-&quot;рыба&quot;, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной &quot;рыбой&quot; для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя <strong>Lorem Ipsum</strong> для распечатки образцов.</p>\r\n<p>\r\n	Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>\r\n','<p>\r\n	<strike>Lorem Ipsum</strike> - это текст-&quot;рыба&quot;, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной &quot;рыбой&quot; для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя <strong>Lorem Ipsum</strong> для распечатки образцов.</p>\r\n<p>\r\n	Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>\r\n','Тестовая запись','Тестовая запись','Тестовая запись');
-
-/*!40000 ALTER TABLE `weee_news` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Дамп таблицы weee_news_categories
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `weee_news_categories`;
-
-CREATE TABLE `weee_news_categories` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `url` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `seo_title` varchar(255) DEFAULT NULL,
-  `seo_description` varchar(255) DEFAULT NULL,
-  `seo_keywords` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `url` (`url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `weee_news_categories` WRITE;
-/*!40000 ALTER TABLE `weee_news_categories` DISABLE KEYS */;
-
-INSERT INTO `weee_news_categories` (`id`, `url`, `name`, `seo_title`, `seo_description`, `seo_keywords`)
-VALUES
-	(1,'test','Тестовая категория','Тестовая категория','Тестовая категория','Тестовая категория');
-
-/*!40000 ALTER TABLE `weee_news_categories` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Дамп таблицы weee_pages
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `weee_pages`;
-
-CREATE TABLE `weee_pages` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `cdate` datetime DEFAULT NULL,
-  `author_id` int(11) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `text` text,
-  `seo_title` varchar(255) DEFAULT NULL,
-  `seo_description` varchar(255) DEFAULT NULL,
-  `seo_keywords` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `url` (`url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `weee_pages` WRITE;
-/*!40000 ALTER TABLE `weee_pages` DISABLE KEYS */;
-
-INSERT INTO `weee_pages` (`id`, `cdate`, `author_id`, `url`, `title`, `text`, `seo_title`, `seo_description`, `seo_keywords`)
-VALUES
-	(1,'2012-08-12 00:16:21',1,'kontakty','Контакты','<p>\r\n	Тест</p>\r\n','Контакты','Контакты','Контакты');
-
-/*!40000 ALTER TABLE `weee_pages` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Дамп таблицы weee_blogs
@@ -226,6 +138,98 @@ VALUES
 	(2,1,'2012-04-25 15:59:48','Тестовый комментарий #2','BlogsPosts',1);
 
 /*!40000 ALTER TABLE `weee_comments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Дамп таблицы weee_news
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `weee_news`;
+
+CREATE TABLE `weee_news` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `cdate` datetime DEFAULT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `short_text` text,
+  `text` text,
+  `seo_title` varchar(255) DEFAULT NULL,
+  `seo_description` varchar(255) DEFAULT NULL,
+  `seo_keywords` varchar(255) DEFAULT NULL,
+  `sort` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `weee_news` WRITE;
+/*!40000 ALTER TABLE `weee_news` DISABLE KEYS */;
+
+INSERT INTO `weee_news` (`id`, `cdate`, `author_id`, `category_id`, `url`, `title`, `short_text`, `text`, `seo_title`, `seo_description`, `seo_keywords`, `sort`)
+VALUES
+	(1,'2012-08-09 23:33:14',2,1,'testovaya_zapis','Тестовая запись','<p>\r\n	<strike>Lorem Ipsum</strike> - это текст-&quot;рыба&quot;, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной &quot;рыбой&quot; для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя <strong>Lorem Ipsum</strong> для распечатки образцов.</p>\r\n<p>\r\n	Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>\r\n','<p>\r\n	<strike>Lorem Ipsum</strike> - это текст-&quot;рыба&quot;, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной &quot;рыбой&quot; для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя <strong>Lorem Ipsum</strong> для распечатки образцов.</p>\r\n<p>\r\n	Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>\r\n','Тестовая запись','Тестовая запись','Тестовая запись',4),
+	(2,'2012-08-18 15:09:06',2,1,'testovaya_zapis_2','Тестовая запись 2','<p>\r\n	Текст</p>\r\n','<p>\r\n	Текст</p>\r\n','Тестовая запись 2','Тестовая запись 2','Тестовая запись 2',1),
+	(3,'2012-08-20 12:10:57',2,1,'testovaya_zapis_3','Тестовая запись 3','<p>\r\n	ываыва</p>\r\n','<p>\r\n	ываыва</p>\r\n','Тестовая запись 3','Тестовая запись 3','Тестовая запись 3',2),
+	(4,'2012-08-20 12:11:18',2,1,'testovaya_zapis_4','Тестовая запись 4','<p>\r\n	ываыва</p>\r\n','<p>\r\n	ываыва</p>\r\n','Тестовая запись 4','Тестовая запись 4','Тестовая запись 4',3);
+
+/*!40000 ALTER TABLE `weee_news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Дамп таблицы weee_news_categories
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `weee_news_categories`;
+
+CREATE TABLE `weee_news_categories` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `seo_title` varchar(255) DEFAULT NULL,
+  `seo_description` varchar(255) DEFAULT NULL,
+  `seo_keywords` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `url` (`url`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `weee_news_categories` WRITE;
+/*!40000 ALTER TABLE `weee_news_categories` DISABLE KEYS */;
+
+INSERT INTO `weee_news_categories` (`id`, `url`, `name`, `seo_title`, `seo_description`, `seo_keywords`)
+VALUES
+	(1,'test','Тестовая категория','Тестовая категория','Тестовая категория','Тестовая категория');
+
+/*!40000 ALTER TABLE `weee_news_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Дамп таблицы weee_pages
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `weee_pages`;
+
+CREATE TABLE `weee_pages` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `cdate` datetime DEFAULT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `text` text,
+  `seo_title` varchar(255) DEFAULT NULL,
+  `seo_description` varchar(255) DEFAULT NULL,
+  `seo_keywords` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `url` (`url`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `weee_pages` WRITE;
+/*!40000 ALTER TABLE `weee_pages` DISABLE KEYS */;
+
+INSERT INTO `weee_pages` (`id`, `cdate`, `author_id`, `url`, `title`, `text`, `seo_title`, `seo_description`, `seo_keywords`)
+VALUES
+	(1,'2012-08-12 00:16:21',1,'kontakty','Контакты','<p>\r\n	Тест</p>\r\n','Контакты','Контакты','Контакты');
+
+/*!40000 ALTER TABLE `weee_pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

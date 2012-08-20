@@ -3,12 +3,25 @@
 class NewsAdminController extends BaseAdminController
 {
 
+    public function actions()
+    {
+        return array(
+            'sortable' => array(
+                'class' => 'ext.sortable.SortableAction',
+                'column' => 'sort',
+                'model' => News::model(),
+            )
+        );
+    }
+
+
     public function actionView($id)
     {
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
     }
+
 
     public function actionCreate()
     {
@@ -22,10 +35,11 @@ class NewsAdminController extends BaseAdminController
                 $this->redirect(array('view', 'id' => $model->id));
         }
 
-        $this->render('create',array(
-            'model'=>$model,
+        $this->render('create', array(
+            'model' => $model,
         ));
     }
+
 
     public function actionUpdate($id)
     {
@@ -43,18 +57,20 @@ class NewsAdminController extends BaseAdminController
         ));
     }
 
+
     public function actionDelete($id)
     {
         if (Yii::app()->request->isPostRequest)
         {
             $this->loadModel($id)->delete();
 
-            if(!isset($_GET['ajax']))
+            if (!isset($_GET['ajax']))
                 $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
         }
         else
             throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
     }
+
 
     public function actionIndex()
     {
@@ -69,6 +85,7 @@ class NewsAdminController extends BaseAdminController
         ));
     }
 
+
     public function loadModel($id)
     {
         Yii::import('application.modules.main.models.News');
@@ -78,5 +95,6 @@ class NewsAdminController extends BaseAdminController
 
         return $model;
     }
+
 
 }
