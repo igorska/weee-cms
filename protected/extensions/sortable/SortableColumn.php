@@ -27,9 +27,9 @@ class SortableColumn extends CDataColumn
         $name = "sortable_" . Yii::app()->controller->route;
         $id = $this->grid->getId();
         $this->_assetsPath = Yii::app()->assetManager->publish(dirname(__FILE__) . '/assets');
-        $cs = Yii::app()->clientScript;
+        $cs = Yii::app()->getClientScript();
         $cs->registerCssFile($this->_assetsPath . '/styles.css');
-        $cs->registerCoreScript('jqueryui');
+        $cs->registerCoreScript('jquery.ui');
         $cs->registerScript("sortable-grid-{$id}", "
             $('#{$id} .sortable-items tbody').sortable({
                 connectWith: '.sortable-clipboard-area',

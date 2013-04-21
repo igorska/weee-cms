@@ -22,6 +22,7 @@ class SortableGridView extends CGridView
                     $exists = true;
 
             if ($exists === false)
+            	Yii::import('ext.sortable.SortableColumn');
                 array_push($this->columns, array('class' => 'SortableColumn'));
         }
 
